@@ -373,9 +373,81 @@ a:focus-visible,
 }
 
 @media print {
+  @page { size: A4; margin: 12mm 14mm; }
+
+  :root {
+    --bg: #fff;
+    --surface: #fff;
+    --ink: #000;
+    --muted: #444;
+    --accent: #000;
+    --accent-ink: #000;
+    --border: #ccc;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { background: #fff; }
-  .hero { background: #fff; color: #111; border-bottom: 2px solid #111; }
-  .hero * { color: #111 !important; }
-  .contacts svg { color: #111; }
-  .card { box-shadow: none; }
+  .skip-link { display: none; }
+
+  /* Шапка — строгая, ч/б */
+  .hero {
+    background: #fff !important;
+    color: #000;
+    padding: 0 0 12px;
+  }
+  .hero__name, .hero__title, .hero__subtitle,
+  .contacts a, .contacts span { color: #000 !important; }
+  .contacts svg { color: #000 !important; }
+
+  /* Фото — сохраняем, но строго */
+  .hero__photo {
+    width: 108px;
+    height: 108px;
+    box-shadow: none;
+    background: #eee;
+  }
+  .hero__photo-fallback { color: #555; }
+
+  /* Карточки — без теней и цвета */
+  .card {
+    box-shadow: none;
+    border: none;
+    padding: 14px 0;
+  }
+
+  /* Теги — нейтральные */
+  .tags li {
+    background: none;
+    color: #000;
+    border: none;
+    padding: 0;
+  }
+  .project-card .tags li {
+    background: none;
+    border: none;
+    color: #000;
+  }
+  .project-card__year { color: #444; background: transparent; }
+
+  /* Подпроекты и пет-проекты — ч/б */
+  .project, .project-card {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    padding: 10px 0;
+  }
+  .project-card:hover { transform: none; box-shadow: none; }
+
+  /* Достижения и ссылки */
+  .achievements li::before { background: #000; }
+  a { color: #000; }
+  .project-card__github { color: #000; }
+  .project-card__github svg { color: #000; }
+
+  /* Футер */
+  .footer { background: #fff; }
+  .footer p { color: #444; }
+
+  /* Не разрывать блоки */
+  .project, .project-card { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
 }
