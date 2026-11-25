@@ -373,7 +373,7 @@ a:focus-visible,
 }
 
 @media print {
-  @page { size: A4; margin: 12mm 14mm; }
+  @page { size: A4; margin: 10mm 13mm; }
 
   :root {
     --bg: #fff;
@@ -448,6 +448,51 @@ a:focus-visible,
   .footer p { color: #444; }
 
   /* Не разрывать блоки */
-  .project, .project-card { break-inside: avoid; page-break-inside: avoid; }
   h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+
+  /* Компактность */
+  body { font-size: 11px; line-height: 1.35; }
+  .container { padding: 0; }
+  .layout { gap: 10px; padding-top: 8px; padding-bottom: 0; }
+  .side { gap: 10px; }
+  .main-col { gap: 10px; }
+
+  .hero { padding: 0 0 6px; }
+  .hero__name { font-size: 15px; }
+  .hero__photo { width: 84px; height: 84px; }
+  .contacts { margin: 8px 0 0; gap: 6px 14px; }
+
+  .card { padding: 8px 0; }
+  .card h2 { margin: 0 0 5px; }
+  .card__sub { margin: 9px 0 3px; }
+  .card__line { margin: 0 0 1px; }
+  .tags { gap: 3px; }
+
+  .job { padding: 2px 0 8px; border-bottom: none; }
+  .job p { margin: 2px 0; }
+  .job ul { margin: 2px 0 0; padding-left: 16px; }
+  .job li { margin-bottom: 1px; }
+
+  .project { margin: 6px 0 0; padding: 3px 0; }
+  .project p { margin: 2px 0; }
+  .project ul { margin: 2px 0 0; padding-left: 16px; }
+  .project li { margin-bottom: 1px; }
+
+  .project-card { gap: 5px; }
+  .project-card > p { margin: 0; }
+  .project-card ul:not(.tags) { gap: 1px; padding-left: 16px; }
+  .project-card__github { padding-top: 0; }
+
+  .footer { display: none; }
+
+  /* Единый кегль для всего текста, кроме имени */
+  .hero__title, .hero__subtitle,
+  .card h2, .card__sub, .job h3, .project h4, .project-card h3,
+  .project p, .project ul,
+  .tags li, .project-card .tags li,
+  .muted, .job .muted, .project .muted,
+  .project-card__year, .project-card > p, .project-card ul:not(.tags),
+  .project-card__github, .contacts li, .footer p {
+    font-size: 11px;
+  }
 }
