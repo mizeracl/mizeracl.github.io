@@ -1,13 +1,13 @@
 :root {
-  --bg: #f6f7f9;
+  --bg: #f8f5fb;
   --surface: #ffffff;
-  --ink: #1c2430;
-  --muted: #5b6572;
-  --accent: #0f766e;
-  --accent-ink: #0b5f59;
-  --border: #e5e9ef;
+  --ink: #2a1e3a;
+  --muted: #6d6480;
+  --accent: #7c3aed;
+  --accent-ink: #6d28d9;
+  --border: #ece6f4;
   --radius: 14px;
-  --shadow: 0 1px 2px rgba(20, 30, 45, 0.06), 0 8px 24px rgba(20, 30, 45, 0.06);
+  --shadow: 0 1px 2px rgba(60, 30, 100, 0.05), 0 8px 24px rgba(60, 30, 100, 0.08);
   --maxw: 1080px;
 }
 
@@ -48,7 +48,7 @@ a:hover { color: var(--accent); }
 
 /* Hero */
 .hero {
-  background: linear-gradient(135deg, #0f172a 0%, #15324d 55%, #0f766e 130%);
+  background: linear-gradient(135deg, #3b0764 0%, #6d28d9 55%, #be185d 130%);
   color: #fff;
   padding: 56px 0 48px;
 }
@@ -97,10 +97,50 @@ a:hover { color: var(--accent); }
   gap: 8px;
   font-size: 0.95rem;
 }
-.contacts svg { flex: none; color: #5eead4; }
+.contacts svg { flex: none; color: #f9a8d4; }
 .contacts a { color: #fff; text-decoration: none; }
 .contacts a:hover { text-decoration: underline; }
 .contacts span { color: rgba(255, 255, 255, 0.85); }
+
+/* Hero: фото */
+.hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.hero__content { flex: 1; min-width: 0; }
+.hero__photo {
+  flex: none;
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+.hero__photo-fallback {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.hero__photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 700px) {
+  .hero__inner { flex-direction: column-reverse; align-items: flex-start; gap: 24px; }
+  .hero__photo { width: 120px; height: 120px; }
+}
 
 /* Layout */
 .layout {
@@ -150,9 +190,9 @@ a:hover { color: var(--accent); }
   gap: 8px;
 }
 .tags li {
-  background: #eef2f6;
-  color: #2c3744;
-  border: 1px solid #e2e8ef;
+  background: #f3eefb;
+  color: #3d3266;
+  border: 1px solid #e6ddf5;
   border-radius: 999px;
   padding: 4px 12px;
   font-size: 0.84rem;
@@ -206,7 +246,7 @@ a:hover { color: var(--accent); }
 .project {
   margin: 14px 0 0;
   padding: 14px 16px;
-  background: #f8fafc;
+  background: #faf8fe;
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: 8px;
@@ -230,36 +270,20 @@ a:hover { color: var(--accent); }
 
 /* Пет-проекты — карточки */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   margin-top: 18px;
 }
 .project-card {
-  position: relative;
-  overflow: hidden;
-  background: #f8fafc;
+  background: #faf8fe;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 22px 18px;
-  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(20, 30, 45, 0.10);
-}
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), #5eead4);
 }
 .project-card__head {
   display: flex;
@@ -276,19 +300,15 @@ a:hover { color: var(--accent); }
 .project-card__year {
   flex: none;
   color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  background: #eef2f6;
-  border-radius: 999px;
-  padding: 2px 10px;
+  font-size: 0.84rem;
 }
 .project-card .tags { margin: 0; }
 .project-card .tags li {
   font-size: 0.78rem;
   padding: 3px 10px;
-  background: #eaf4f3;
-  border-color: #d4e7e5;
-  color: #0b5f59;
+  background: #f5edfd;
+  border-color: #e5d3fb;
+  color: #6d28d9;
 }
 .project-card > p {
   margin: 0;
